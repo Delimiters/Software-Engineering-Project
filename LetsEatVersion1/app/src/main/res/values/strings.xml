@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Lets Eat Version 1</string>
-    <string name="title_activity_account_creation_screen">accountCreationScreen</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-</resources>
