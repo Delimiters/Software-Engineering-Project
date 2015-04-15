@@ -1,17 +1,19 @@
 <?php
 
-$_Accounts = file_get_contents('users.txt');
-$_myFile = fopen("users.txt", "a+");
 $_lines = file("users.txt");
+$_signal = 0;
 
 if($_REQUEST["username"]!="" && $_REQUEST["password"]!="")
 {
-	if(strpos($_Accounts, $_REQUEST["username"]) === FALSE)
+	foreach($_lines as $value)
 	{
-		// Username Not Found
-		echo "Username or Password Incorrect";
+		if(strpos($value, $_REQUEST["username"]) === 0)
+		{
+			// Username Found
+			$_signal = 1;
+		}
 	}
-	else
+	if( $_signal == 1 )
 	{
 		foreach($_lines as $value)
 		{
@@ -31,6 +33,11 @@ if($_REQUEST["username"]!="" && $_REQUEST["password"]!="")
 				}
 			}
 		}
+	}
+	else
+	{
+		// Username Not Found
+		echo "Username or Password Incorrect";
 	}
 }
 else

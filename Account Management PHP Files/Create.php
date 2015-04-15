@@ -1,19 +1,23 @@
 <?php
 
-$_Accounts = file_get_contents('users.txt');
 $_myFile = fopen("users.txt", "a+");
-$_lines = file("users.txt");
+$_signal = 0;
 
 if($_REQUEST["username"]!="" && $_REQUEST["password"]!="" && $_REQUEST["firstname"]!="" && $_REQUEST["lastname"]!="" && $_REQUEST["hometown"]!="")
 {
-	if(strpos($_Accounts, $_REQUEST["username"]) !== FALSE)
+	foreach($_lines as $value)
 	{
-		// Username Is Already Taken
-		echo "Username is already taken";
+		if(strpos($value, $_REQUEST["username"]) === 0)
+		{
+			// Username already taken
+			echo "Username Already Taken";
+			$_signal = 1;
+		}
 	}
-	else
+	if( $_signal == 0 )
 	{
-		fwrite($_myFile, $_REQUEST["username"].";".$_REQUEST["password"].";".$_REQUEST["firstname"].";".$_REQUEST["lastname"].";".$_REQUEST["hometown"]."\n");
+		// Account sucessfully writen to the datafile
+		fwrite($_myFile, $_REQUEST["username"].";".$_REQUEST["password"].";".$_REQUEST["firstname"].";".$_REQUEST["lastname"].";".$_REQUEST["hometown"].";\n");
 	}
 }
 else
