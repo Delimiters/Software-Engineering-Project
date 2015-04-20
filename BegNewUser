@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>New User</title>
+</head>
+<h3>New User Page</h3>
+<p>Create Account</p>
+<form action="PhpNewUser_Control.php" method = "post">
+<label for="UserName">FirstName:</label><input type="text"     id="FirstName" name="First"><br /><br />
+<label for="Password">LastName:</label> <input type="text"     id="LastName"  name="Last"><br /><br />
+<label for="Password">UserName:</label> <input type="text"     id="UserName"  name="User"><br /><br />
+<label for="Password">Password:</label> <input type="password" id="Password"  name="Pass"><br /><br />
+<label for="Password">City:    </label> <input type="text"     id="City"      name="City"><br /><br />
+<form><input type="submit" value="Login"></form>
+</form>
+</html>
+
+
+
